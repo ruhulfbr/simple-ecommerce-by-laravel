@@ -27,6 +27,36 @@ class Product extends Controller{
 		$data['categories'] = DB::table('category')->where('publication_status',1)->get();
 		return view('admin.add_product')->with($data);
 	}
+    
+//     public function saveFile(Request $request){
+//         $image = $request->file('image_file');
+//         if($image){
+//             $image_name = str_random(20);
+//             $ext = strtolower($image->getClientOriginalExtension());
+//             $img = Image::make($image->getRealPath())->resize(300, 200);
+
+//             $image_fullname = $image_name.'.'.$ext;
+//             $path = 'public/image/sized/';
+//             $image_url = $path.$image_fullname;
+//             $img->save($image_url);
+
+
+//             $path2 = 'public/image/';
+//             $success = $image->move($path2,$image_fullname);
+
+
+//             if($success){
+//                 return "successFully uploaded";
+//             }else{
+//                 return "Not Success";
+//             }
+//         }else{
+//             return "Uploading Problem";
+//         }
+//     }
+    
+    
+    
 	public function SaveProduct(Request $request){
 		$this->validate($request,[
 			'product_name'       => 'required',
